@@ -1,0 +1,31 @@
+[package]
+name = "altnet"
+version = "0.1.0"
+authors = ["Antoine Riard <dev@ariard.me>"]
+edition = "2018"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "altnet-orchester"
+path = "src/bin/orchester.rs"
+
+[[bin]]
+name = "altnet-sync"
+path = "src/bin/sync.rs"
+
+[[bin]]
+name = "altnet-lightning"
+path = "src/bin/lightning.rs"
+
+[dependencies]
+capnp = "0.14.4"
+capnp-rpc = "0.14.1"
+tokio = { version = "1", features = [ "io-util", "macros", "rt", "rt-multi-thread", "sync", "net", "time" ] }
+tokio-util = { version = "0.6.3", features = ["compat"] }
+futures = "0.3"
+bitcoin = { version = "0.28.1", default-features = false, features = ["secp-recovery"] }
+
+[build-dependencies]
+capnpc = "0.14.3"
